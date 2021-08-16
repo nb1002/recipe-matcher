@@ -14,9 +14,14 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY")
     app.config['JWT_TOKEN_LOCATION'] = 'cookies'
+
     db.init_app(app)
     jwt.init_app(app)
 
+    from models.User import User
+
+    from command import command
+    app.register_blueprint(command)
 
     @app.route("/test") #initialized flask app
     def helloworld(): #added helloworld endpoint
