@@ -19,16 +19,22 @@ def create_app():
     jwt.init_app(app)
 
     from models.User import User
-
+    from models.Recipe import Recipe
+    from models.Ingredients import Ingredients
+    from models.userFavorites import userFavorites
+    from models.IngInRecipe import IngInRecipe
     from command import command
     app.register_blueprint(command)
 
+
+    @app.route("/signup")
+    def signup():
+        return flask.render_template('signup.html')
     @app.route("/test") #initialized flask app
     def helloworld(): #added helloworld endpoint
         return "helloworld"
 
     return app
-
 
 
 #name
