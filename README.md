@@ -5,8 +5,6 @@ The target audience for this website is beginners or amateur cooks who are looki
 a recipe matching website in non-english languages (ie mongolian). Initial test website will be developed in english but will later be translated, giving users the option to pick between languages.  The database will be minimal to start with, only including 5-7 entries for each attributes. 
 
 **Functionalities**
-
-Functionalities
 -Users will be able to enter ingredients to the input field for a recipe that matches their ingredients
 -Input field will have a dropdown ingredients list when user types. minimum 3 letters to be written before menu is activated
 -When submit button is clicked the query will be run to retrieve matching recipes
@@ -19,7 +17,7 @@ Functionalities
 Rough mock ups:
 https://imgur.com/a/oIYZeXj
 
-**ERD & Schema **
+**ERD & Schema**
 -User (UserID, UserName, UserEmail, UserPassword)
 -Recipes (RecipeID, Name, Ingredients, Type, Serving, Time, Img, Directions)
 -Ingredients (IngredientID, Name, Counter)
