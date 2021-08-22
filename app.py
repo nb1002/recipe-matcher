@@ -1,4 +1,5 @@
 import flask
+from flask.templating import render_template
 import flask_sqlalchemy
 import flask_jwt_extended
 import dotenv
@@ -30,7 +31,6 @@ def create_app():
     from command import command
     app.register_blueprint(command)
 
-
     @app.route("/signup")
     def signup():
         return flask.render_template('signup.html')
@@ -41,18 +41,49 @@ def create_app():
         #return("success")
         input = flask.request.form
         hashed_pw = hashlib.sha256(input['password'].encode('utf-8')).hexdigest()
-        new_user = User(name=input['name'], email=input['email'], password= hashed_pw )
-        print(new_user)
-        return('success')
+        new_user = User(name=input['name'], email=input['email'], password= hashed_pw)
+        db.session.add(new_user)
+        db.session.commit()
+        print("pushed")
+        return flask.redirect('/login') 
+
+    @app.route("/login")
+    def login():
+        return flask.render_template('login.html')
 
 
+    @app.route('/login', methods= ['POST'])
+    def plogin():
+        input = flask.request.form
+
+        # get email from input
+        email_input = input['email']
+        pw_input = hashlib.sha256(input['password'].encode('utf-8')).hexdigest()
+
+        # look for match in db
+        result = db.session.query(User).filter_by(email= email_input , password = pw_input).first() 
+
+        if result is None:
+            return "invalid login info"
+            
+        else: 
+            # make jwt and set cookies
+            token = flask_jwt_extended.create_access_token(identity = email_input)
+            response = flask.Response("login successful")
+            flask_jwt_extended.set_access_cookies(response, token)
+
+            #if successful redirect to front
+            return flask.redirect('/front')
+            
+    @app.route('/front')
+    def frontpage(): 
+        return flask.render_template('front.html')
 
     @app.route("/test") #initialized flask app
     def helloworld(): #added helloworld endpoint
         return "helloworld"
 
     return app
-
 
 #name
 if __name__ == "__main__":
