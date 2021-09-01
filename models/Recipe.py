@@ -11,3 +11,6 @@ class Recipe(db.Model):
     directions = db.Column(db.String)
     favorites = db.relationship('userFavorites')
     ingrecipe = db.relationship('IngInRecipe')
+
+def __repr__(self):
+  return self.name

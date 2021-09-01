@@ -1,4 +1,18 @@
-<form>
-    
+<form action='front' method='POST'>
+    <label>Enter ingredients below</label>
+    <input id='input' name='input' type='text' list='ings'>
+    <datalist id='ings'>
+        <option value = "egg" />
+        <option value = 'potato'/>
+    </datalist>
+
+    <input type="submit">
+
 </form>
 <p>welcome</p>
+
+
+
+<p> {{recipe.name}}</p>
+<p> {{recipe.directions}}</p>
+<img src = {{recipe.img}} width=200px> 

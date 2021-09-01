@@ -77,7 +77,9 @@ def create_app():
             
     @app.route('/front')
     def frontpage(): 
-        return flask.render_template('front.html')
+        recipe =  db.session.query(Recipe).filter_by(recipeid = 1).first_or_404()
+    
+        return flask.render_template('front.html', recipe=recipe)
 
     @app.route("/test") #initialized flask app
     def helloworld(): #added helloworld endpoint
