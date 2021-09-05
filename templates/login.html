@@ -1,14 +1,52 @@
-<form action="login" method="POST">
-    <p>
-        <h1>Login below</h1>
-    <label>Email
-        <input id="email" name="email" type="email">
-    </label>
-    </p>
-    <p>
-    <label>Password
-        <input id="password" name="password" type="password">
-    </label>    
-    </p>
-    <input type="submit">
-</form>
+<head>
+    <link href="static/styling/login.css" rel="stylesheet" type="text/css">
+</head>
+
+<div class='body'>
+    <div class='container'>
+        <div class='logo'>
+            <img src='https://en.facebookbrand.com/wp-content/uploads/2016/05/M.png' width=100px> 
+        </div>
+        <div class='input'>
+            <h1>Login</h1>
+            <form action="login" method="POST">
+                <input 
+                class='fields'
+                id="email" 
+                name="email" 
+                type="email" 
+                placeholder="  email">
+
+                <input 
+                class='fields'
+                id="password" 
+                name="password" 
+                type="password"
+                placeholder="  password">
+                </br>
+                <input type="submit" value="Log In" id='loginbtn'>
+            </form>
+        </div>
+
+            <span class="signup">Don't have an account? <a href="http://127.0.0.1:5000/signup">Sign up</a>
+            </span>
+
+    </div>
+</div>
+
+
+<!--add space between user input and box border-->
+
+
+
+
+
+
+
+
+
+        
+    
+        
+       
+    

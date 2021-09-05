@@ -1,18 +1,33 @@
-<form action='front' method='POST'>
-    <label>Enter ingredients below</label>
-    <input id='input' name='input' type='text' list='ings'>
-    <datalist id='ings'>
-        <option value = "egg" />
-        <option value = 'potato'/>
-    </datalist>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <input type="submit">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-</form>
-<p>welcome</p>
+    <title>Recipe Finder</title>
+    <link rel='icon' href='https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Mangekyou_Sharingan_Sasuke_%28Eternal%29.svg/1200px-Mangekyou_Sharingan_Sasuke_%28Eternal%29.svg.png'>
+  </head>
+
+  <body>
+    <form action='front' method='POST'>
+        <label>Enter ingredients below</label>
+        <input id='input' name='input' type='text' list='ings'>
+
+        <datalist id='ings'>
+            <option value = "egg" />
+            <option value = 'potato'/>
+        </datalist>
+    
+        <input type="submit">
+    
+    </form>
+    
+    <p> {{recipe.name}}</p>
+    <img src = {{recipe.img}} width=200px>
+    <p> {{recipe.directions}}</p> 
+  </body>
+</html>
 
 
-
-<p> {{recipe.name}}</p>
-<p> {{recipe.directions}}</p>
-<img src = {{recipe.img}} width=200px> 
